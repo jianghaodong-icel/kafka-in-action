@@ -1,7 +1,10 @@
 package protobuf_serializer
 
 import (
+	"fmt"
 	"github.com/Shopify/sarama"
+	"github.com/golang/protobuf/proto"
+	"github.com/jianghaodong-icel/kafka-in-action/simple_demo/protobuf_serializer/student"
 )
 
 var (
@@ -19,9 +22,26 @@ func ProtobufSerializer() {
 	}
 
 	// 2. 构建待发送消息
-
-	message := sarama.ProducerMessage{
-		Topic: Topic,
-		Value:     ,
+	stu := &student.Student{
+		Name: "jhd",
+		Age:  18,
 	}
+	studentBytes, err := proto.Marshal(stu)
+	if err != nil {
+		panic(err)
+	}
+	message := &sarama.ProducerMessage{
+		Topic: Topic,
+		Value: sarama.ByteEncoder(studentBytes),
+	}
+
+	// 3. 发送消息
+	partition, offset, err := producer.SendMessage(message)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("final result => partition: %d, offset: %d\n", partition, offset)
+
+	// 4. 关闭生产者实例
+	_ = producer.Close()
 }

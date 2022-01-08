@@ -9,12 +9,12 @@ import (
 )
 
 var (
-	BrokerList = []string{"localhost:9902"}
+	BrokerList = []string{"localhost:9092"}
 	Topic      = "jhd-test"
 )
 
 // AsyncProducer 异步生产者
-func AsyncProducer() {
+func AsyncProduce() {
 	config := sarama.NewConfig()
 	config.Producer.Return.Successes = true // 设置消息发送成功通知，消息发送失败同时默认存在
 
@@ -71,8 +71,9 @@ ProduceLoop:
 }
 
 // SyncProducer 同步生产者
-func SyncProducer() {
+func SyncProduce() {
 	config := sarama.NewConfig()
+	config.Producer.Return.Successes = true
 
 	// 1. 创建生产者实例
 	producer, err := sarama.NewSyncProducer(BrokerList, config)

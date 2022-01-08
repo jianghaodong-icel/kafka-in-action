@@ -12,8 +12,9 @@ var (
 	Topic      = "jhd-test"
 )
 
-func ProtobufSerializer() {
+func ProtobufProduce() {
 	config := sarama.NewConfig()
+	config.Producer.Return.Successes = true
 
 	// 1. 构建生产者实例
 	producer, err := sarama.NewSyncProducer(BrokerList, config)

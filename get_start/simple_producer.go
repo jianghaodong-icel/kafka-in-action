@@ -1,4 +1,4 @@
-package simple_demo
+package get_start
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ var (
 	Topic      = "jhd-test"
 )
 
-// AsyncProducer 异步生产者
+// AsyncProduce 异步生产消息
 func AsyncProduce() {
 	config := sarama.NewConfig()
 	config.Producer.Return.Successes = true // 设置消息发送成功通知，消息发送失败同时默认存在
@@ -70,7 +70,7 @@ ProduceLoop:
 	fmt.Printf("final result => enqueued: %d, produceSuccesses: %d, produceErrors: %d \n", enqueued, produceSuccesses, produceErrors)
 }
 
-// SyncProducer 同步生产者
+// SyncProduce 同步生产消息
 func SyncProduce() {
 	config := sarama.NewConfig()
 	config.Producer.Return.Successes = true

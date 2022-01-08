@@ -1,17 +1,13 @@
-package protobuf_serializer
+package get_start
 
 import (
 	"fmt"
 	"github.com/Shopify/sarama"
 	"github.com/golang/protobuf/proto"
-	"github.com/jianghaodong-icel/kafka-in-action/simple_demo/protobuf_serializer/student"
+	"github.com/jianghaodong-icel/kafka-in-action/get_start/student"
 )
 
-var (
-	BrokerList = []string{"localhost:9092"}
-	Topic      = "jhd-test"
-)
-
+// ProtobufProduce 通过Protobuf序列化生产消息
 func ProtobufProduce() {
 	config := sarama.NewConfig()
 	config.Producer.Return.Successes = true

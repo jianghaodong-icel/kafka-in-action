@@ -1,0 +1,9 @@
+syntax = 'proto3';
+package protobuf_serializer;
+
+option go_package="./";
+
+message Student {
+  string Name = 1; // 姓名
+  uint64 Age = 2;  // 年龄
+}

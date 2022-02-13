@@ -1,4 +1,4 @@
-package get_start
+package producer
 
 import (
 	"fmt"
@@ -7,6 +7,10 @@ import (
 	"os/signal"
 	"sync"
 )
+
+/*
+	title: 简单的生产者
+ */
 
 var (
 	BrokerList = []string{"localhost:9092"}

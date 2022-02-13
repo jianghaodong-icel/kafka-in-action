@@ -1,11 +1,15 @@
-package get_start
+package producer
 
 import (
 	"fmt"
 	"github.com/Shopify/sarama"
 	"github.com/golang/protobuf/proto"
-	"github.com/jianghaodong-icel/kafka-in-action/get_start/student"
+	"github.com/jianghaodong-icel/kafka-in-action/producer/student"
 )
+
+/*
+	title: 可以发送自定义的序列化内容的生产者
+ */
 
 // ProtobufProduce 通过Protobuf序列化生产消息
 func ProtobufProduce() {
